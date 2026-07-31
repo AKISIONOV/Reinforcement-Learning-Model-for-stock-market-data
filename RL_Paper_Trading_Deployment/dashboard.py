@@ -180,15 +180,14 @@ else:
 # -----------------------------------------------------------------------------
 if df is None:
     st.title("📈 RL Paper Trading Dashboard")
-    st.error("⚠️ Paper Trading Log CSV File Not Found or Empty!")
+    st.error(f"⚠️ {load_error}")
     st.warning("""
     **Instructions to generate execution log data:**
-    1. Open your terminal in the project root: `f:/SURE Trust/Capstone Project/RL_Paper_Trading_Deployment`
-    2. Run the paper trading execution engine:
+    1. If using GitHub Actions, go to the Actions tab and manually run the **Daily Paper Trading Execution** workflow to push fresh data to Supabase.
+    2. Alternatively, run the engine locally:
        ```bash
        python trade_executor.py
        ```
-    3. Once execution finishes logging to `logs/paper_trade_log.csv`, click **Refresh Data** in the sidebar.
     """)
     st.info(f"Target file path being read: `{log_path_input}`")
     st.stop()
