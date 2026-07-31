@@ -84,10 +84,12 @@ def load_trade_log(file_path: str):
             sb_url = None
             sb_key = None
             
+            # Use st.secrets if available (Streamlit Cloud)
             if "SUPABASE_URL" in st.secrets and "SUPABASE_KEY" in st.secrets:
                 sb_url = st.secrets["SUPABASE_URL"]
                 sb_key = st.secrets["SUPABASE_KEY"]
             else:
+                # Fallback to local .env
                 from dotenv import load_dotenv
                 load_dotenv()
                 sb_url = os.getenv("SUPABASE_URL")
@@ -96,9 +98,17 @@ def load_trade_log(file_path: str):
             if sb_url and sb_key and not sb_url.startswith("YOUR_"):
                 supabase: Client = create_client(sb_url, sb_key)
                 response = supabase.table("trade_logs").select("*").execute()
+                
+                # If connected but table is empty
+                if isinstance(response.data, list) and len(response.data) == 0:
+                    return None, "Connected to Supabase Cloud, but the database is empty! Please run `trade_executor.py` locally to push the first trades.", "SUPABASE_CLOUD"
+                
+                # If connected and has data
                 if response.data:
                     df = pd.DataFrame(response.data)
                     return df, None, "SUPABASE_CLOUD"
+            else:
+                print("Supabase URLs missing or are placeholder.")
         except Exception as e:
             print(f"Supabase connection warning: {e}")
 
