@@ -10,7 +10,20 @@ The project is divided into two primary phases:
 The core RL training environment that ingests engineered features (HMM Market Regimes, GARCH volatility, Corwin-Schultz spreads).
 - **Environment Upgrades**: Tracks a 567-dimensional observation space to handle regime-based position clipping, daily circuit breakers, and action-turnover penalties.
 - **Reward Function**: Optimized to heavily penalize downside variance (Sortino proxy) and transaction costs.
-- **Results**: Achieved a 62.21% out-of-sample cumulative return, a Sortino ratio of 0.99, and effectively curbed over-trading.
+
+### 📈 Benchmarks (Out-of-Sample: 2016 - 2020)
+| Metric | Baseline RL Model | **Optimized RL Model (PPO)** |
+| :--- | :--- | :--- |
+| **Total Return** | 56.71% | **62.21%** |
+| **Annualized Return** | 10.91% | **11.80%** |
+| **Sharpe Ratio** | 0.6452 | **0.7030** |
+| **Sortino Ratio** | 0.8973 | **0.9951** |
+| **Max Drawdown** | 33.04% | **31.47%** |
+| **Win Rate** | 55.63% | **57.00%** |
+
+### 💾 Dataset
+The complete engineered dataset used for training the model (containing 79,380 rows of 28 DJIA assets, featuring Hidden Markov Model regimes, GARCH volatilities, and Corwin-Schultz spreads) is openly available in this repository. 
+You can view or download the raw data here: `Optimized_RL_Trading_Strategy/data/processed_market_dynamics.csv`
 
 ### 2. `RL_Paper_Trading_Deployment/` (Live Deployment Pipeline)
 A production-ready pipeline that connects the trained PPO agent to live market feeds.
