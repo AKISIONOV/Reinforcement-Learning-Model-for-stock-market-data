@@ -25,7 +25,7 @@ class TestDashboardDataLoading:
     def test_load_trade_log_non_existent_file(self):
         """Test 1: Assert load_trade_log() handles non-existent file path gracefully."""
         non_existent_path = "os_non_existent_log_file_path_12345.csv"
-        df, error_msg = load_trade_log(non_existent_path)
+        df, error_msg, *_ = load_trade_log(non_existent_path)
         
         assert df is None, f"Expected df to be None, got {type(df)}"
         assert error_msg is not None, "Expected non-None error message"
@@ -39,7 +39,7 @@ class TestDashboardDataLoading:
             
         try:
             # Test completely empty 0-byte file
-            df, error_msg = load_trade_log(tmp_path)
+            df, error_msg, *_ = load_trade_log(tmp_path)
             assert df is None, f"Expected None for 0-byte file, got {df}"
             assert error_msg is not None
             assert ("no records" in error_msg.lower() or "failed to parse" in error_msg.lower())
@@ -48,7 +48,7 @@ class TestDashboardDataLoading:
             with open(tmp_path, "w", encoding="utf-8") as f:
                 f.write("timestamp,date,ticker,action_type,portfolio_net_worth\n")
                 
-            df, error_msg = load_trade_log(tmp_path)
+            df, error_msg, *_ = load_trade_log(tmp_path)
             assert df is None, f"Expected None for empty dataframe, got {df}"
             assert error_msg is not None
             assert "no records" in error_msg.lower()
@@ -66,7 +66,7 @@ class TestDashboardDataLoading:
             with open(tmp_path, "wb") as f:
                 f.write(b"\x00\xff\xfe\xfd\x00\x01\x02\x03\x04\x05 corrupt binary stream data\n")
                 
-            df, error_msg = load_trade_log(tmp_path)
+            df, error_msg, *_ = load_trade_log(tmp_path)
             assert df is None, f"Expected df to be None for corrupted CSV, got {df}"
             assert error_msg is not None, "Expected error message for corrupted CSV"
             assert "Failed to parse CSV log file" in error_msg or "Error" in error_msg
