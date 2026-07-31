@@ -1,11 +1,6 @@
-numpy==1.26.4
-pandas==2.2.2
-yfinance==0.2.40
-arch==7.0.0
-hmmlearn==0.3.2
-scikit-learn==1.5.1
-stable-baselines3==2.3.2
-streamlit==1.36.0
-plotly==5.22.0
-supabase==2.5.0
-python-dotenv==1.0.1
+numpy
+pandas
+streamlit
+plotly
+supabase
+python-dotenv
