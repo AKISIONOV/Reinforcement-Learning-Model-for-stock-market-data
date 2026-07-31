@@ -1,5 +1,5 @@
-numpy==2.4.0
-pandas==2.3.3
+numpy>=1.26.4,<2.0.0
+pandas>=2.2.0,<2.3.0
 yfinance
 arch==8.0.0
 hmmlearn==0.3.3
@@ -7,3 +7,5 @@ scikit-learn
 stable-baselines3==2.9.0
 supabase
 python-dotenv==1.0.1
+requests>=2.31.0
+

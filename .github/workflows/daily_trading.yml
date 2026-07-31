@@ -19,6 +19,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: 'pip'
+          cache-dependency-path: 'RL_Paper_Trading_Deployment/requirements-heavy.txt'
           
       - name: Install ML Dependencies
         run: |
@@ -36,3 +37,11 @@ jobs:
         run: |
           cd RL_Paper_Trading_Deployment
           python trade_executor.py
+
+      - name: Upload Paper Trade Log Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: paper-trade-log
+          path: RL_Paper_Trading_Deployment/logs/paper_trade_log.csv
+
