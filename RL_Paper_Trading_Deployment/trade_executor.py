@@ -21,6 +21,13 @@ from dotenv import load_dotenv
 
 warnings.filterwarnings('ignore')
 
+# Optional Supabase import for Cloud Database logging
+try:
+    from supabase import create_client, Client
+    HAS_SUPABASE = True
+except ImportError:
+    HAS_SUPABASE = False
+
 # Optional package imports with fallback support
 try:
     from arch import arch_model
@@ -536,6 +543,18 @@ def run_paper_trading():
         print("[WARNING] Alpaca API credentials missing or placeholder values in environment/.env.")
         print("[WARNING] Automatically entering MOCK EXECUTION MODE.")
 
+    # 2b. Check Supabase Credentials for Cloud Logging
+    supabase_url = os.getenv("SUPABASE_URL", "").strip()
+    supabase_key = os.getenv("SUPABASE_KEY", "").strip()
+    supabase_client = None
+
+    if HAS_SUPABASE and supabase_url and supabase_key and not supabase_url.startswith("YOUR_"):
+        try:
+            supabase_client = create_client(supabase_url, supabase_key)
+            print("[SUCCESS] Authenticated with Supabase Cloud Database!")
+        except Exception as e:
+            print(f"[WARNING] Failed to initialize Supabase client: {e}")
+
     # 3. Load & Prepare Market Data
     print("[INFO] Preparing market dataset, technical indicators, and HMM market regimes...")
     combined_df, price_array, tech_array, regime_array, dates = prepare_market_dataset()
@@ -743,9 +762,21 @@ def run_paper_trading():
 
         print(f"[{current_date}] Mode: {execution_mode} | Regime: {active_regime_name:<16} | Trades: {step_trades:2d} | Cash: ${cash:10,.2f} | Net Worth: ${net_worth:10,.2f} | Return: {daily_ret:+7.4%} | DD: {drawdown:.4%}")
 
-    # Write logs to CSV
+    # Write logs to local CSV backup
     log_df = pd.DataFrame(trade_logs)
     log_df.to_csv(LOG_FILE_PATH, index=False)
+
+    # Push logs to Supabase Cloud Database
+    if supabase_client:
+        try:
+            print("[INFO] Pushing executed trades to Supabase Cloud...")
+            clean_logs = log_df.replace({np.nan: None}).to_dict(orient="records")
+            # Batch insert in chunks of 100
+            for i in range(0, len(clean_logs), 100):
+                supabase_client.table("trade_logs").insert(clean_logs[i:i+100]).execute()
+            print(f"[SUCCESS] Pushed {len(clean_logs)} trade records to Supabase Cloud Database.")
+        except Exception as e:
+            print(f"[ERROR] Failed to push logs to Supabase: {e}")
 
     print("-" * 70)
     print(f"[SUCCESS] Execution completed over {len(range(start_step, num_dates))} steps.")

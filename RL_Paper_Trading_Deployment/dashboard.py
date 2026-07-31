@@ -21,6 +21,13 @@ try:
 except ImportError:
     HAS_PLOTLY = False
 
+# Optional Supabase import
+try:
+    from supabase import create_client, Client
+    HAS_SUPABASE = True
+except ImportError:
+    HAS_SUPABASE = False
+
 # -----------------------------------------------------------------------------
 # 1. Page Configuration & Custom CSS
 # -----------------------------------------------------------------------------
@@ -63,20 +70,48 @@ st.markdown("""
 # -----------------------------------------------------------------------------
 # 2. Data Loader Function
 # -----------------------------------------------------------------------------
+@st.cache_data(ttl=60)
 def load_trade_log(file_path: str):
     """
-    Loads paper trading execution CSV log with graceful error handling.
-    Returns (DataFrame or None, error_message or None).
+    Loads paper trading execution log from Supabase Cloud (if configured)
+    with a graceful fallback to the local CSV file.
+    Returns (DataFrame or None, error_message or None, source_str).
     """
+    # 1. Try Supabase Cloud Database first
+    if HAS_SUPABASE:
+        try:
+            # Check Streamlit Cloud Secrets or local .env
+            sb_url = None
+            sb_key = None
+            
+            if "SUPABASE_URL" in st.secrets and "SUPABASE_KEY" in st.secrets:
+                sb_url = st.secrets["SUPABASE_URL"]
+                sb_key = st.secrets["SUPABASE_KEY"]
+            else:
+                from dotenv import load_dotenv
+                load_dotenv()
+                sb_url = os.getenv("SUPABASE_URL")
+                sb_key = os.getenv("SUPABASE_KEY")
+                
+            if sb_url and sb_key and not sb_url.startswith("YOUR_"):
+                supabase: Client = create_client(sb_url, sb_key)
+                response = supabase.table("trade_logs").select("*").execute()
+                if response.data:
+                    df = pd.DataFrame(response.data)
+                    return df, None, "SUPABASE_CLOUD"
+        except Exception as e:
+            print(f"Supabase connection warning: {e}")
+
+    # 2. Fallback to Local CSV
     if not os.path.exists(file_path):
-        return None, f"File not found at path: {file_path}"
+        return None, f"File not found at path: {file_path}", "LOCAL_CSV"
     try:
         df = pd.read_csv(file_path)
         if df.empty:
-            return None, "Log file exists but contains no records."
-        return df, None
+            return None, "Log file exists but contains no records.", "LOCAL_CSV"
+        return df, None, "LOCAL_CSV"
     except Exception as e:
-        return None, f"Failed to parse CSV log file: {str(e)}"
+        return None, f"Failed to parse CSV log file: {str(e)}", "LOCAL_CSV"
 
 
 # -----------------------------------------------------------------------------
@@ -96,11 +131,12 @@ if st.sidebar.button("🔄 Refresh Data", use_container_width=True):
     st.rerun()
 
 # Load Data
-df, load_error = load_trade_log(log_path_input)
+df, load_error, data_source = load_trade_log(log_path_input)
 
 # Sidebar Status & Summary
 if df is not None:
-    st.sidebar.success(f"📁 Log File Loaded ({len(df)} records)")
+    source_icon = "☁️" if data_source == "SUPABASE_CLOUD" else "📁"
+    st.sidebar.success(f"{source_icon} {data_source} ({len(df)} records)")
     
     # Execution Mode Indicator
     exec_mode = df['execution_mode'].iloc[-1] if 'execution_mode' in df.columns else "UNKNOWN"
