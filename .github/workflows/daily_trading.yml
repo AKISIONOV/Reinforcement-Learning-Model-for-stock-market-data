@@ -1,0 +1,38 @@
+name: Daily Paper Trading Execution
+
+on:
+  schedule:
+    # Run at 21:00 UTC (4:00 PM EST / 5:00 PM EDT) Monday through Friday
+    - cron: '0 21 * * 1-5'
+  workflow_dispatch: # Allows manual triggering from the GitHub UI
+
+jobs:
+  execute-trades:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          
+      - name: Install ML Dependencies
+        run: |
+          cd RL_Paper_Trading_Deployment
+          pip install -r requirements-heavy.txt
+          
+      - name: Execute RL Trading Model
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+          APCA_API_BASE_URL: https://paper-api.alpaca.markets
+          TRADING_MODE: paper
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          cd RL_Paper_Trading_Deployment
+          python trade_executor.py
