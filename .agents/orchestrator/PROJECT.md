@@ -10,8 +10,8 @@
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
 | 1 | CI/CD & Workflow Investigation | Inspect repo structure, workflow file, script, gh CLI logs | None | DONE |
-| 2 | Dependency Resolution & Runtime Fixes | Fix daily_trading.yml, dependencies, trade_executor.py, push to main | M1 | IN_PROGRESS |
-| 3 | GitHub Actions Trigger & Verification | Run gh workflow run, monitor run, verify success conclusion | M2 | PLANNED |
+| 2 | Dependency Resolution & Runtime Fixes | Fix daily_trading.yml, dependencies, trade_executor.py, push to main | M1 | DONE |
+| 3 | GitHub Actions Trigger & Verification | Run gh workflow run, monitor run, verify success conclusion | M2 | IN_PROGRESS |
 
 ## Interface Contracts
 ### GitHub Actions Workflow ↔ trade_executor.py
