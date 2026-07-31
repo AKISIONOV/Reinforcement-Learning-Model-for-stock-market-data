@@ -1,0 +1,8 @@
+Test Scenario,Status,Details
+Flatline / Zero Volatility,PASS,"NaNs: 0, Infs: 0"
+Extreme Volatility Spike,PASS,"NaNs: 0, Infs: 0"
+Zero Volume Run,PASS,"NaNs: 0, Infs: 0"
+Zero/Negative Prices,PASS,"NaNs: 0, Infs: 0"
+Corwin-Schultz Flatline,PASS,Values: [0. 0. 0. 0.]
+Short Dataframe (<21 rows),EMPTY_OUTPUT,Returned 0 rows
+Regime Fitting Normal Case,PASS,Max sum err: 2.220446049250313e-16
