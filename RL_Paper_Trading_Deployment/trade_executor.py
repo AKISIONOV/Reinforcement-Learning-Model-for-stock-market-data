@@ -12,8 +12,21 @@ Executes RL PPO trading strategy on 28 DJIA assets with:
 
 import os
 import sys
+import io
+import time
 import datetime
 import warnings
+
+# --- NUMPY 2.0 TO 1.X PICKLE HACK ---
+# The model was trained locally on NumPy 2.x, but GitHub Actions installs NumPy 1.x
+# NumPy 2.x changed 'numpy.core' to 'numpy._core'. This alias prevents ModuleNotFoundError.
+try:
+    import numpy.core
+    sys.modules['numpy._core'] = numpy.core
+except ImportError:
+    pass
+# ------------------------------------
+
 import numpy as np
 import pandas as pd
 import requests
