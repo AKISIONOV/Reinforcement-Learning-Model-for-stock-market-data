@@ -84,7 +84,7 @@
 <hr style="height:1px; border-top:1px solid #ccc; width:80%;" />
 
 
-## **References**
+## **Reference**
 
 - [Research Paper](https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/54792d0b885c955d49a8530b3ac26a9ea1be5898/ssrn-3690996%20Paper.pdf)
 <!--you can add refrences over here in same syntax as above -->
@@ -94,7 +94,7 @@
 ## **Learnings from LST and SST**
 
 <!-- add your experiences over here -->
-> _LifeSkill Training teach me how to interacts with the day to day environment and Softskill Training teach me how to survive the working Environment... and also along with to learn Resume Building , interview hacks.
+> LifeSkill Training teach me how to interacts with the day to day environment and Softskill Training teach me how to survive the working Environment and also along with to learn Resume Building , interview hacks.
 ---
 
 ## **Community Services**
