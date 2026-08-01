@@ -63,50 +63,19 @@
 
 ## Overall Learning 
 
-> _This is a placeholder. Replace the text below with your personal learning summary._
-During this course, I learned the fundamentals of web development and project design.
-I gained hands-on experience with HTML, CSS, JavaScript and strengthened my skills in 
-problem-solving, teamwork, documentation, and delivering real-world project solutions.
-
+>I learned and strong in foundation of python, SQL, numpy, pandas, matplotlib, seaborn, scikitlearn, pytorch, Prompt Engineering, Probability and statistics along with soft skills training,Disciplne and consistency also to gained the practical Exposure of AIML.
 
 <h2 style="color:#333;"> Projects Completed </h2>
 <div align="left" style="margin: 20px; font-size: 16px;">
 
-<p><strong><a href="#project1">Project 1:</a></strong> &lt;!-- Add project title → --&gt;</p>
-
-<p><strong><a href="#project2">Project 2:</a></strong> &lt;!-- Add project title → --&gt;</p>
-
-<p><strong><a href="#project3">Project 3:</a></strong> &lt;!-- Add project title → --&gt;</p>
-
-<p><em>(You can add more projects as needed)</em></p>
+<p><strong><a href="#project1">Project :</a></strong> Algorithmic Trading Strategy Optimization via Deep RL </p>
 
 </div>
 
-<!-- Project 1 -->
-<h3 id="project1">Project 1: <!-- Add Project Title --></h3>
+<!-- Project  -->
+<h3 id="project1">Project : Algorithmic Trading Strategy Optimization via Deep RL </h3>
 <p>
-  This project involved designing and developing a basic functional module using the core concepts taught in the course.
-  It focused on understanding requirements, creating structured code, and implementing key features.
-</p>
-<p>
-  <a href="<!-- Add link to full report -->" target="_blank"><strong>→ View Full Project Report</strong></a>
-</p>
-
-<!-- Project 2 -->
-<h3 id="project2">Project 2: <!-- Add Project Title --></h3>
-<p>
-  This project expanded on intermediate concepts and required integrating multiple components to build a more complete solution.
-  It enhanced understanding of UI/UX design, modular coding, and testing.
-</p>
-<p>
-  <a href="<!-- Add link to full report -->" target="_blank"><strong>→ View Full Project Report</strong></a>
-</p>
-
-<!-- Project 3 -->
-<h3 id="project3">Project 3: <!-- Add Project Title --></h3>
-<p>
-  The final project showcased the practical application of all concepts learned throughout the course.  
-  It required planning, building, optimizing, and documenting a complete real-world project.
+  This project involved an end-to-end Reinforcement Learning framework for stock market trading, designed to address intraday regime shifts, spoofing, news shocks, and volatility clustering. It improves upon traditional static parametric strategies by utilizing a Deep RL agent (Proximal Policy Optimization) that dynamically adapts to market conditions.
 </p>
 <p>
   <a href="<!-- Add link to full report -->" target="_blank"><strong>→ View Full Project Report</strong></a>
