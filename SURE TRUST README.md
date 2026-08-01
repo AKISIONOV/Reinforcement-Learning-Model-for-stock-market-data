@@ -125,9 +125,9 @@ During my internship period, I participated in multiple community-oriented activ
 <!-- change url below with your image urls (inside  src='')-->
 
 <div align="center">
-<img src="" alt="Community Service Photo 1" width="30%">
-<img src="https://media.licdn.com/dms/image/v2/D561FAQEJNBia4UCa5w/feedshare-document-images_800/B56Zm5b6SJJkAg-/2/1759752731458?e=1766016000&v=beta&t=6RfJQWWqlQUPcCvDnQNW7kR6yf7w-wPDsIPxum409ck" alt="Community Service Photo 2" width="30%">
-<img src="https://media.licdn.com/dms/image/v2/D561FAQEJNBia4UCa5w/feedshare-document-images_800/B56Zm5b6SJJkAg-/3/1759752731458?e=1766016000&v=beta&t=yWaunKdRdLUKBLbmM3UjRYYz-_GSCfWEQ3_R7dW0xLM" alt="Community Service Photo 3" width="30%">
+<img src="https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/817ffd4a8fe1248c2261cb467d4cd6a1b38c5c27/Community%20services/IMG20260728101148_01.jpeg" alt="Community Service Photo 1" width="30%">
+<img src="https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/817ffd4a8fe1248c2261cb467d4cd6a1b38c5c27/Community%20services/IMG_20260717_212710356.jpg.jpeg" alt="Community Service Photo 2" width="30%">
+<img src="https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/817ffd4a8fe1248c2261cb467d4cd6a1b38c5c27/Community%20services/IMG_20260717_222128501.jpg.jpeg" alt="Community Service Photo 3" width="30%">
 </div>
 
 ---
