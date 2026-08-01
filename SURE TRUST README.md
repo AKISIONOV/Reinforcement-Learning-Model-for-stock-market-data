@@ -48,7 +48,7 @@
 
 ## **Table of Contents**
 - [Course Learning](#course-learning-to-be-edited-by-student)
-- [Projects Completed](#projects-completed)
+- [Project Completed](#projects-completed)
 - [Project Introduction](#project-introduction)
 - [Technologies Used](#technologies-used)
 - [Roles and Responsibilities](#roles-and-responsibilities)
@@ -78,7 +78,7 @@
   This project involved an end-to-end Reinforcement Learning framework for stock market trading, designed to address intraday regime shifts, spoofing, news shocks, and volatility clustering. It improves upon traditional static parametric strategies by utilizing a Deep RL agent (Proximal Policy Optimization) that dynamically adapts to market conditions.
 </p>
 <p>
-  <a href="<!-- Add link to full report -->" target="_blank"><strong>→ View Full Project Report</strong></a>
+  <a href="https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/54792d0b885c955d49a8530b3ac26a9ea1be5898/SureTrust_Capstone_Project_Document.pdf" target="_blank"><strong>→ View Full Project Report</strong></a>
 </p>
 
 <hr style="height:1px; border-top:1px solid #ccc; width:80%;" />
@@ -86,7 +86,7 @@
 
 ## **References**
 
-- [Wikipedia](https://wikipedia.com)
+- [Research Paper](https://github.com/AKISIONOV/Reinforcement-Learning-Model-for-stock-market-data/blob/54792d0b885c955d49a8530b3ac26a9ea1be5898/ssrn-3690996%20Paper.pdf)
 <!--you can add refrences over here in same syntax as above -->
 ---
 
@@ -94,8 +94,7 @@
 ## **Learnings from LST and SST**
 
 <!-- add your experiences over here -->
-> _This is a placeholder. Replace the text below with your personal learning from LST and SST sessions summary._
-LST and SST sessions helped me....
+> _LifeSkill Training teach me how to interacts with the day to day environment and Softskill Training teach me how to survive the working Environment... and also along with to learn Resume Building , interview hacks.
 ---
 
 ## **Community Services**
@@ -105,20 +104,17 @@ LST and SST sessions helped me....
 During my internship period, I participated in multiple community-oriented activities .....<!-- add descreption in your own words -->
 
 ### **Activities Involved**
-<!-- add the location where you given -->
-- **Blood Donation** – Donated blood and supported basic assistance tasks during the camp.
   
  <!-- add the location where you have panted -->
-- **Tree Plantation Drive** – Participated by planting trees and contributing to environmental improvement.
+- **Tree Plantation Drive** – Participated by planting trees and contributing to environmental improvement. (Location - Coimbatore)
 
   <!-- add the location where you helped -->
-- **Helping Elder Citizens** – Assisted two elderly individuals with simple daily tasks and provided support where needed. 
+- **Helping Elder Citizens** – Assisted elderly individuals to provided support to give the dinner(food). (Location - Coimbatore)
 
 <!-- you can write impacts according to your experience in your words-->
 
 ### **Impact / Contribution**
 
-- Helped create a supportive environment during the blood donation camp. <!-- add the location where you given -->
 - Actively participated in promoting a greener and cleaner surroundings.
 - Offered personal assistance to elder citizens, strengthening community bonds.
 - Improved skills in communication, coordination, and social responsibility.
