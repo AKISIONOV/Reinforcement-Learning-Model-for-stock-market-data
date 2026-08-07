@@ -97,7 +97,7 @@ def load_trade_log(file_path: str):
                 
             if sb_url and sb_key and not sb_url.startswith("YOUR_"):
                 supabase: Client = create_client(sb_url, sb_key)
-                response = supabase.table("trade_logs").select("*").execute()
+                response = supabase.table("trade_logs").select("*").limit(10000).execute()
                 
                 # If connected but table is empty
                 if isinstance(response.data, list) and len(response.data) == 0:
