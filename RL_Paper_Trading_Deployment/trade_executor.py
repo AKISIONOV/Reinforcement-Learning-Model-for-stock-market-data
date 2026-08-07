@@ -55,7 +55,7 @@ load_dotenv()
 DJIA_28_TICKERS = [
     'AAPL', 'AXP', 'BA', 'CAT', 'CSCO', 'CVX', 'DIS', 'GS', 'HD', 'IBM',
     'INTC', 'JNJ', 'JPM', 'KO', 'MCD', 'MMM', 'MRK', 'MSFT', 'NKE', 'PFE',
-    'PG', 'TRV', 'UNH', 'V', 'VZ', 'WBA', 'WMT', 'XOM'
+    'PG', 'TRV', 'UNH', 'V', 'VZ', 'AMZN', 'WMT', 'XOM'
 ]
 
 # 17 Default Technical Indicators
